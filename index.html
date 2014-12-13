@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Input Types Playground</title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	
+	<form>
+		<a class="input-section-add" href="#">Add</a>
+		<div class="input-sections">
+		</div>
+		<input type="submit" value="Submit">
+	</form>
+
+	<script type="text/html" id="input_section_tmpl">
+		<section class="input-section">
+			<a class="input-section-remove" href="#">Remove</a>
+			<input class="input" type="<%=type%>" <%=pattern%> <%=required%>>
+			<div class="input-section-modifiers">
+				<select name="type">
+					<option value="text">Text</option>
+					<option value="number">Number</option>
+					<option value="tel">Telephone</option>
+				</select>
+				<select name="pattern">
+					<option value="">No Pattern</option>
+					<option value="[0-9]*">Numbers only - [0-9]*</option>
+					<option value="(\d{5}?)">Short Zip Code - (\d{5}?)</option>
+					<option value="(\d{5}([\-]\d{4})?)">Extended Zip Code - (\d{5}([\-]\d{4})?)</option>
+				</select>
+				<label><input name="required" type="checkbox" value="required" checked>Required</label>
+			</div>
+		</section>
+	</script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/microtemplates.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
