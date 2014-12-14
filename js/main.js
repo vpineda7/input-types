@@ -36,8 +36,10 @@
 
         removeSection: function(e) {
             e.preventDefault();
-            var self = $(e.currentTarget);
-            self.closest('.input-section').remove();
+            if (confirm('Are you sure?') == true) {
+                var self = $(e.currentTarget);
+                self.closest('.input-section').remove();
+            }
         },
 
         getPropertyNameAndValue: function(e) {
