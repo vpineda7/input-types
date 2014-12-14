@@ -6,6 +6,10 @@
 
         init: function() {
 
+            $(function() {
+                FastClick.attach(document.body);
+            });
+
             this.dataObject = {
                 "type": "text",
                 "pattern": "",
