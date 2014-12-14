@@ -92,6 +92,7 @@ h2 {
 
 .input {
 	border: none;
+	border-radius: none;
 	font-size: 1.125em;
 	line-height: 1.85;
 	margin-bottom: 0.444444444em;
