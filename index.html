@@ -12,37 +12,43 @@
 <body>
 	
 	<header class="header">
-		<div class="content">
+		<div class="centered">
 			<h1>Input Type Playground</h1>
 			<h2>A testing tool for form input types, patterns and attributes</h2>
+			<a class="button input-section-add" href="#">Add an Input</a>
 		</div>
 	</header>
-	<div class="content">
+	<div class="centered content">
 		<form>
-			<a class="button input-section-add" href="#">Add an Input</a>
 			<div class="input-sections">
 			</div>
-			<input type="submit" value="Submit">
+			<button class="button" type="submit">Submit</button>
 		</form>
 	</div>
 
 	<script type="text/html" id="input_section_tmpl">
 		<section class="input-section">
-			<a class="button input-section-remove" href="#">Remove</a>
+			<a class="input-section-remove" href="#">x</a>
 			<input class="input" type="<%=type%>" <%=pattern%> <%=required%>>
 			<div class="input-section-modifiers">
-				<select name="type">
-					<option value="text">Text</option>
-					<option value="number">Number</option>
-					<option value="tel">Telephone</option>
-				</select>
-				<select name="pattern">
-					<option value="">No Pattern</option>
-					<option value="[0-9]*">Numbers only - [0-9]*</option>
-					<option value="(\d{5}?)">Short Zip Code - (\d{5}?)</option>
-					<option value="(\d{5}([\-]\d{4})?)">Extended Zip Code - (\d{5}([\-]\d{4})?)</option>
-				</select>
-				<label><input name="required" type="checkbox" value="required" checked>Required</label>
+				<div class="input-section-modifier">
+					<select name="type">
+						<option value="text">Text</option>
+						<option value="number">Number</option>
+						<option value="tel">Telephone</option>
+					</select>
+				</div>
+				<div class="input-section-modifier">
+					<select name="pattern">
+						<option value="">No Pattern</option>
+						<option value="[0-9]*">Numbers only - [0-9]*</option>
+						<option value="(\d{5}?)">Short Zip Code - (\d{5}?)</option>
+						<option value="(\d{5}([\-]\d{4})?)">Extended Zip Code - (\d{5}([\-]\d{4})?)</option>
+					</select>
+				</div>
+				<div class="input-section-modifier">
+					<label><input name="required" type="checkbox" value="required" checked>Required</label>
+				</div>
 			</div>
 		</section>
 	</script>

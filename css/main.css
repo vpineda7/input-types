@@ -20,6 +20,8 @@ body {
 
 .header {
 	background-color: #FCEFF9;
+	padding: .5em;
+	position: relative;
 }
 
 h1 {
@@ -27,9 +29,9 @@ h1 {
 	font-family: 'Oswald', sans-serif;
     font-weight: 700;
     line-height: 51px;
-    font-size: 46px;
+    font-size: 2em;
     text-transform: uppercase;
-    margin: 0 0 23px 0;
+    margin: 0;
 }
 
 h2 {
@@ -37,24 +39,62 @@ h2 {
 	font-family: 'Droid Serif', serif;
     font-weight: 400;
     font-style: italic;
-    font-size: 20px;
+    font-size: 1.125em;
     line-height: 23px;
-    margin: 0 0 23px 0;
+    margin: 0 0 10px 0;
 }
 
-.content {
+.centered {
 	margin: 0 auto;
 	max-width: 60em;
 }
 
+.content {
+	padding: .5em;
+}
+
 .button {
 	background-color: #73956F;
+	border: none;
 	color: #fff;
 	display: inline-block;
+	font-family: 'Droid Serif', serif;
+	font-size: 1em;
+	outline: none;
 	padding: .6em 1em;
 	text-decoration: none;
 }
 
 .input-section {
-	margin-bottom: 1em;
+	border-bottom: 5px dotted #73956F;
+	color: #FCEFF9;
+	margin-bottom: .5em;
+	padding-bottom: .5em;
+	padding-right: 2.68em;
+	position: relative;
+}
+
+.input-section-remove {
+	background-color: #73956F;
+	color: #FCEFF9;
+	display: block;
+	font-family: sans-serif;
+	font-size: 2em;
+	height: 1.125em;
+	line-height: 1;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	text-decoration: none;
+	top: 0;
+	width: 1.125em;
+}
+
+.input {
+	border: none;
+	font-size: 1.125em;
+	line-height: 1.85;
+	margin-bottom: 0.444444444em;
+	outline: none;
+	width: 100%;
 }
