@@ -5,34 +5,61 @@
     IT.Global = {
 
         init: function() {
-
-            $(function() {
-                FastClick.attach(document.body);
-            });
-
-            this.dataObject = {
+            
+            this.inputValues = {
                 "type": "text",
                 "pattern": "",
                 "required": "required",
                 "value": ""
             };
+
             this.resultsSection = $('.input-sections');
 
-            this.addSection();
+            var urlParams = this.getUrlParameter('inputs')
+            if ((urlParams != null) && (urlParams.length > 0)) {
+                this.dataObject = JSON.parse(urlParams);
+                $.extend(this.inputValues, this.dataObject);
+            }
+
+
+            for (var i = 0; i < this.dataObject.length; i++) {
+                this.addSection(this.dataObject[i]);
+            }
+            
+            this.bindFastClick();
             this.bindEvents();
         },
 
+        bindFastClick: function() {
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        },
+
         bindEvents: function() {
-            $('.input-section-add').on('click', $.proxy(this.addSection, this));
+            $('.input-section-add').on('click', $.proxy(this.onAddClick, this));
             $(document).on('click', '.input-section-remove', $.proxy(this.removeSection, this));
             $(document).on('change', '.input-section-modifiers select, .input-section-modifiers input', $.proxy(this.getPropertyNameAndValue, this));
         },
 
-        addSection: function(e) {
-            if (typeof e != 'undefined') {
-                e.preventDefault();
+        onAddClick: function(e) {
+            e.preventDefault();
+            this.addSection(this.dataObject[0]);
+        },
+
+        addSection: function(inputObject) {
+            console.log(inputObject);
+            for (var key in inputObject) {
+                if (inputObject.hasOwnProperty(key)) {
+                    var obj = inputObject[key];
+                    for (var prop in obj) {
+                        if (obj.hasOwnProperty(prop)) {
+                            alert(prop + " = " + obj[prop]);
+                        }
+                    }
+                }
             }
-            this.resultsSection.append(tmpl('input_section_tmpl', this.dataObject));
+            // this.resultsSection.append(tmpl('input_section_tmpl', inputObject));
         },
 
         removeSection: function(e) {
@@ -72,11 +99,16 @@
         },
 
         buildNewUrl: function() {
-            // if (history.pushState) {
-            //     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?myNewUrlQuery=1';
-            //     window.history.pushState({path:newurl},'',newurl);
-            // }
-        }
+            if (history.pushState) {
+                // var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?myNewUrlQuery=1';
+                // window.history.pushState({path:newurl},'',newurl);
+            }
+        },
+
+        getUrlParameter: function(name) {
+            var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+            return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+        },
 
     }
 
