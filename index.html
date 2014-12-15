@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>Input Types Playground</title>
+	<title>Input Type Sandbox</title>
 	<link rel="stylesheet" href="css/reset.css">
 	<link href="http://fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/main.css">
@@ -13,8 +13,8 @@
 	
 	<header class="header">
 		<div class="centered">
-			<h1>Input Type Playground</h1>
-			<h2>A testing tool for form input types, patterns and attributes</h2>
+			<h1>Input Type Sandbox</h1>
+			<h2>A testing tool for form input types, patterns and other attributes</h2>
 			<a class="button input-section-add" href="#">Add an Input</a>
 		</div>
 	</header>
@@ -29,7 +29,7 @@
 	<script type="text/html" id="input_section_tmpl">
 		<section class="input-section">
 			<a class="input-section-remove" href="#">x</a>
-			<input class="input" type="<%=type%>" <%=pattern%> <%=required%>>
+			<input class="input" value="<%=value%>" type="<%=type%>" <%=pattern%> <%=required%>>
 			<div class="input-section-modifiers">
 				<div class="input-section-modifier">
 					<select name="type">
@@ -55,7 +55,7 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/lib/fastclick.js"></script>
-	<script src="js/microtemplates.js"></script>
+	<script src="js/lib/microtemplates.js"></script>
 	<script src="js/main.js"></script>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

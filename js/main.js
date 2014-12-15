@@ -13,7 +13,8 @@
             this.dataObject = {
                 "type": "text",
                 "pattern": "",
-                "required": "required"
+                "required": "required",
+                "value": ""
             };
             this.resultsSection = $('.input-sections');
 
@@ -71,10 +72,10 @@
         },
 
         buildNewUrl: function() {
-            if (history.pushState) {
-                var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?myNewUrlQuery=1';
-                window.history.pushState({path:newurl},'',newurl);
-            }
+            // if (history.pushState) {
+            //     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?myNewUrlQuery=1';
+            //     window.history.pushState({path:newurl},'',newurl);
+            // }
         }
 
     }
