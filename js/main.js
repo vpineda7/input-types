@@ -6,27 +6,24 @@
 
         init: function() {
             
-            this.inputValues = {
-                "type": "text",
+            this.resultsSection = $('.input-sections');
+            this.inputTemplate = $('#input-section-template').html();
+            Mustache.parse(this.inputTemplate); 
+            this.defaultInputValues = {
                 "pattern": "",
-                "required": "required",
+                "placeholder": "",
+                "required": "",
+                "type": "text",
                 "value": ""
             };
+            this.defaultTypes = [
+                "text",
+                "number",
+                "tel"
+            ];
 
-            this.resultsSection = $('.input-sections');
-
-            var urlParams = this.getUrlParameter('inputs')
-            if ((urlParams != null) && (urlParams.length > 0)) {
-                this.dataObject = JSON.parse(urlParams);
-                $.extend(this.inputValues, this.dataObject);
-            }
-
-
-            for (var i = 0; i < this.dataObject.length; i++) {
-                this.addSection(this.dataObject[i]);
-            }
+            this.addSection(this.buildInputData(true));
             
-            this.bindFastClick();
             this.bindEvents();
         },
 
@@ -37,29 +34,41 @@
         },
 
         bindEvents: function() {
+            this.bindFastClick();
             $('.input-section-add').on('click', $.proxy(this.onAddClick, this));
             $(document).on('click', '.input-section-remove', $.proxy(this.removeSection, this));
             $(document).on('change', '.input-section-modifiers select, .input-section-modifiers input', $.proxy(this.getPropertyNameAndValue, this));
         },
 
-        onAddClick: function(e) {
-            e.preventDefault();
-            this.addSection(this.dataObject[0]);
+        buildInputData: function(checkUrl) {
+            var vals = [];
+            var urlParams = this._getUrlParameter('inputs')
+            if ((checkUrl == true) && (urlParams != null) && (this._isValidJson(urlParams))) {
+                urlParams = JSON.parse(urlParams);
+                for (var i = 0; i < urlParams.length; i++) {
+                    vals.push(this._extendObjects({}, this.defaultInputValues, urlParams[i]));
+                }
+            } else {
+                vals.push(this.defaultInputValues);
+            }
+            return vals;
         },
 
-        addSection: function(inputObject) {
-            console.log(inputObject);
-            for (var key in inputObject) {
-                if (inputObject.hasOwnProperty(key)) {
-                    var obj = inputObject[key];
-                    for (var prop in obj) {
-                        if (obj.hasOwnProperty(prop)) {
-                            alert(prop + " = " + obj[prop]);
-                        }
-                    }
+        onAddClick: function(e) {
+            e.preventDefault();
+            this.addSection(this.buildInputData(), true);
+        },
+
+        addSection: function(data, isReversed) {
+            for (var i = 0; i < data.length; i++) {
+                var rendered = Mustache.render(this.inputTemplate, data[i]);
+                if (isReversed) {
+                    this.resultsSection.prepend(rendered);
+                } else {
+                    this.resultsSection.append(rendered);
                 }
             }
-            // this.resultsSection.append(tmpl('input_section_tmpl', inputObject));
+            this.resultsSection.find('.input-section').first().find('.input').focus();
         },
 
         removeSection: function(e) {
@@ -105,12 +114,53 @@
             }
         },
 
-        getUrlParameter: function(name) {
+        showError: function(message) {
+            $('.error-messages').html(message).addClass('active');
+            setTimeout(function(errorContainer) {
+                  $('.error-messages').removeClass('active');
+            }, 4000);
+        },
+
+        _getUrlParameter: function(name) {
             var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
             return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
         },
 
-    }
+        _isValidJson: function(jsonString) {
+            try {
+                var o = JSON.parse(jsonString);
+
+                // Handle non-exception-throwing cases:
+                // Neither JSON.parse(false) or JSON.parse(1234) throw errors, hence the type-checking,
+                // but... JSON.parse(null) returns 'null', and typeof null === "object", 
+                // so we must check for that, too.
+                if (o && typeof o === "object" && o !== null) {
+                    return true;
+                }
+            }
+            catch (e) { 
+                this.showError('The JSON in your URL is invalid.');
+            }
+
+            return false;
+        },
+
+        _extendObjects: function(out) {
+            
+            out = out || {};
+
+            for (var i = 1; i < arguments.length; i++) {
+                if (!arguments[i]) {
+                    continue;
+                }
+                for (var key in arguments[i]) {
+                    if (arguments[i].hasOwnProperty(key))
+                        out[key] = arguments[i][key];
+                    }
+                }
+                return out;
+            }
+        }
 
     IT.Global.init();
 
