@@ -5,10 +5,7 @@
     IT.Global = {
 
         init: function() {
-            
             this.resultsSection = $('.input-sections');
-            this.inputTemplate = $('#input-section-template').html();
-            Mustache.parse(this.inputTemplate); 
             this.defaultInputValues = {
                 "pattern": "",
                 "placeholder": "",
@@ -23,7 +20,6 @@
             ];
 
             this.addSection(this.buildInputData(true));
-            
             this.bindEvents();
         },
 
@@ -61,7 +57,7 @@
 
         addSection: function(data, isReversed) {
             for (var i = 0; i < data.length; i++) {
-                var rendered = Mustache.render(this.inputTemplate, data[i]);
+                var rendered = tmpl("input_section_template", data[i]);
                 if (isReversed) {
                     this.resultsSection.prepend(rendered);
                 } else {

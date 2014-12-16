@@ -28,33 +28,42 @@
 		</form>
 	</div>
 
-	<script id="input-section-template" type="x-tmpl-mustache">
+	<script id="input_section_template" type="text/html">
 		<section class="input-section">
 			<a class="input-section-remove" href="#">x</a>
 			<input class="input" 
-				type="{{type}}"
-				{{#value}}value="{{value}}"{{/value}} 
-				{{#pattern}}pattern="{{pattern}}"{{/pattern}} 
-				{{#placeholder}}placeholder="{{placeholder}}"{{/placeholder}} 
-				{{#required}}{{required}}{{/required}}>
+				type="<%=type%>"
+				<% if (value) { %>
+					value="<%=value%>"
+				<% } %>
+				<% if (pattern) { %>
+					pattern="<%=pattern%>"
+				<% } %>
+				<% if (placeholder) { %>
+					placeholder="<%=placeholder%>"
+				<% } %>
+				<% if (required) { %>
+					required
+				<% } %>
+			>
 			<div class="input-section-modifiers">
 				<div class="input-section-modifier">
 					<select name="type" form="modifiers-form">
-						<option value="text">Text</option>
-						<option value="number">Number</option>
-						<option value="tel">Telephone</option>
+						<option value="text"<% if (type == 'text') { %> selected<% } %>>Text</option>
+						<option value="number"<% if (type == 'number') { %> selected<% } %>>Number</option>
+						<option value="tel"<% if (type == 'tel') { %> selected<% } %>>Telephone</option>
 					</select>
 				</div>
 				<div class="input-section-modifier">
 					<select name="pattern" form="modifiers-form">
 						<option value="">No Pattern</option>
-						<option value="[0-9]*">Numbers only - [0-9]*</option>
-						<option value="(\d{5}?)">Short Zip Code - (\d{5}?)</option>
-						<option value="(\d{5}([\-]\d{4})?)">Extended Zip Code - (\d{5}([\-]\d{4})?)</option>
+						<option value="[0-9]*"<% if (pattern == '[0-9]*') { %> selected<% } %>>Numbers only - [0-9]*</option>
+						<option value="(\d{5}?)"<% if (pattern == '(\d{5}?)') { %> selected<% } %>>Short Zip Code - (\d{5}?)</option>
+						<option value="(\d{5}([\-]\d{4})?)"<% if (pattern == '(\d{5}([\-]\d{4})?)') { %> selected<% } %>>Extended Zip Code - (\d{5}([\-]\d{4})?)</option>
 					</select>
 				</div>
 				<div class="input-section-modifier">
-					<label><input name="required" type="checkbox" value="required" form="modifiers-form">Required</label>
+					<label><input name="required" type="checkbox" value="required" form="modifiers-form"<% if (required == 'required') { %> checked<% } %>>Required</label>
 				</div>
 			</div>
 		</section>
@@ -62,7 +71,7 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/lib/fastclick.js"></script>
-	<script src="js/lib/mustache.js"></script>
+	<script src="js/lib/microtemplates.js"></script>
 	<script src="js/main.js"></script>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
