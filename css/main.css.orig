@@ -19,7 +19,11 @@ body {
 }
 
 .header {
+<<<<<<< HEAD
+	background-color: #CDC5B4;
+=======
 	background-color: #cdc5b4;
+>>>>>>> develop
 	padding: .5em;
 	position: relative;
 }

@@ -19,35 +19,51 @@
 		</div>
 	</header>
 	<div class="centered content">
+		<div class="error-messages"></div>
+		<form class="modifiers-form" id="modifiers-form"></form>
 		<form>
 			<div class="input-sections">
 			</div>
-			<button class="button" type="submit">Submit</button>
+			<button class="button" type="submit">Test Validation</button>
 		</form>
 	</div>
 
-	<script type="text/html" id="input_section_tmpl">
+	<script id="input_section_template" type="text/html">
 		<section class="input-section">
 			<a class="input-section-remove" href="#">x</a>
-			<input class="input" value="<%=value%>" type="<%=type%>" <%=pattern%> <%=required%>>
+			<input class="input" 
+				type="<%=type%>"
+				<% if (value) { %>
+					value="<%=value%>"
+				<% } %>
+				<% if (pattern) { %>
+					pattern="<%=pattern%>"
+				<% } %>
+				<% if (placeholder) { %>
+					placeholder="<%=placeholder%>"
+				<% } %>
+				<% if (required) { %>
+					required
+				<% } %>
+			>
 			<div class="input-section-modifiers">
 				<div class="input-section-modifier">
-					<select name="type">
-						<option value="text">Text</option>
-						<option value="number">Number</option>
-						<option value="tel">Telephone</option>
+					<select name="type" form="modifiers-form">
+						<option value="text"<% if (type == 'text') { %> selected<% } %>>Text</option>
+						<option value="number"<% if (type == 'number') { %> selected<% } %>>Number</option>
+						<option value="tel"<% if (type == 'tel') { %> selected<% } %>>Telephone</option>
 					</select>
 				</div>
 				<div class="input-section-modifier">
-					<select name="pattern">
+					<select name="pattern" form="modifiers-form">
 						<option value="">No Pattern</option>
-						<option value="[0-9]*">Numbers only - [0-9]*</option>
-						<option value="(\d{5}?)">Short Zip Code - (\d{5}?)</option>
-						<option value="(\d{5}([\-]\d{4})?)">Extended Zip Code - (\d{5}([\-]\d{4})?)</option>
+						<option value="[0-9]*"<% if (pattern == '[0-9]*') { %> selected<% } %>>Numbers only - [0-9]*</option>
+						<option value="(\d{5}?)"<% if (pattern == '(\d{5}?)') { %> selected<% } %>>Short Zip Code - (\d{5}?)</option>
+						<option value="(\d{5}([\-]\d{4})?)"<% if (pattern == '(\d{5}([\-]\d{4})?)') { %> selected<% } %>>Extended Zip Code - (\d{5}([\-]\d{4})?)</option>
 					</select>
 				</div>
 				<div class="input-section-modifier">
-					<label><input name="required" type="checkbox" value="required" checked>Required</label>
+					<label><input name="required" type="checkbox" value="required" form="modifiers-form"<% if (required == 'required') { %> checked<% } %>>Required</label>
 				</div>
 			</div>
 		</section>
