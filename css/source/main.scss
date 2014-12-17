@@ -1,9 +1,7 @@
 @import "reset",
+	"mixins",
 	url(//fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic),
 	"variables";
-
-
-/* http://coolors.co/454851-73956f-7bae7f-95d7ae-cdc5b4 */
 
 html {
 	box-sizing: border-box;
@@ -25,7 +23,7 @@ body {
 
 .header {
 	background-color: $color-tan;
-	padding: .5em;
+	padding: $spacing-vertical;
 	position: relative;
 }
 
@@ -62,7 +60,7 @@ h2 {
 	color: $color-orange;
 	min-height: 2em;
 	opacity: 0;
-	-webkit-transition: opacity 1000ms;
+	transition: opacity 1000ms;
 }
 
 .error-messages.active {
@@ -85,10 +83,8 @@ h2 {
 	display: none;
 }
 
-.input-sections:after {
-	clear: both;
-	content: "";
-	display: table;
+.input-sections {
+	@extend %clearfix;
 }
 
 .input-section {
