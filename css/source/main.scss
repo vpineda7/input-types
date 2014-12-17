@@ -71,7 +71,26 @@ body {
 	font-size: 1em;
 	outline: none;
 	padding: .6em 1em;
+	text-align: center;
 	text-decoration: none;
+}
+
+.action-buttons {
+	@extend %clearfix;
+
+	.button {
+		float: left;
+		width: 49%;
+
+		&:nth-child(odd) {
+			margin-right: 1%;
+		}
+
+		&:nth-child(even) {
+			margin-left: 1%;
+		}
+	}
+
 }
 
 .modifiers-form {
@@ -141,6 +160,18 @@ body {
 		-webkit-appearance: menulist-button;
 	}
 	
+}
+
+@media screen and (min-width: 30em) {
+
+	.action-buttons {
+
+		.button {
+			width: auto;
+		}
+
+	}
+
 }
 
 @media screen and (min-width: 48em) {
