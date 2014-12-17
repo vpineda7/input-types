@@ -65,6 +65,7 @@
                 }
             }
             this.resultsSection.find('.input-section').first().find('.input').focus();
+            this.buildNewUrl();
         },
 
         removeSection: function(e) {
@@ -72,6 +73,7 @@
             if (confirm('Are you sure?') == true) {
                 var self = $(e.currentTarget);
                 self.closest('.input-section').remove();
+                this.buildNewUrl();
             }
         },
 
@@ -105,8 +107,31 @@
 
         buildNewUrl: function() {
             if (history.pushState) {
-                // var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?myNewUrlQuery=1';
-                // window.history.pushState({path:newurl},'',newurl);
+                var allInputs = this.resultsSection.find('.input');
+                var allInputValues = [];
+                allInputs.each(function() {
+                    var inputVals = {};
+                    var allowedTypes = [
+                        'type',
+                        'step',
+                        'placeholder',
+                        'step',
+                        'required',
+                        'pattern'
+                    ];
+                    $(this.attributes).each(function() {
+                        if (allowedTypes.indexOf(this.nodeName) != -1) {
+                            if (this.nodeName == 'required') {
+                                inputVals[this.nodeName] = 'required';
+                            } else {
+                                inputVals[this.nodeName] = this.value;
+                            }
+                        }
+                    });
+                    allInputValues.push(inputVals);
+                });
+                var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?inputs=' + JSON.stringify(allInputValues);
+                window.history.pushState({path:newurl},'',newurl);
             }
         },
 

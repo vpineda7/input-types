@@ -19,11 +19,7 @@ body {
 }
 
 .header {
-<<<<<<< HEAD
-	background-color: #CDC5B4;
-=======
 	background-color: #cdc5b4;
->>>>>>> develop
 	padding: .5em;
 	position: relative;
 }
@@ -84,6 +80,12 @@ h2 {
 	display: none;
 }
 
+.input-sections:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+
 .input-section {
 	border-bottom: 5px dotted #73956f;
 	color: #FCEFF9;
@@ -123,3 +125,26 @@ h2 {
 .input-section-modifier select {
 	width: 50%;
 }
+<<<<<<< HEAD
+=======
+
+@media screen and (min-width: 48em) {
+
+	.input-sections {
+		display: flex;
+		flex-flow(row);
+	}
+
+	.input-section {
+		width: 50%;
+	}
+
+	.input-section:nth-child(odd) {
+		margin-right: 1em;
+	}
+
+	.input-section:nth-child(even) {
+		margin-left: 1em;
+	}
+}
+>>>>>>> develop
