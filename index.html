@@ -29,7 +29,6 @@
 
 	<script id="input_section_template" type="text/html">
 		<section class="input-section">
-			<a class="input-section-remove" href="#">x</a>
 			<input class="input" 
 				type="<%=type%>"
 				<% if (value) { %>
@@ -45,6 +44,7 @@
 					required
 				<% } %>
 			>
+			<a class="input-section-remove" href="#">x</a>
 			<div class="input-section-modifiers">
 				<div class="input-section-modifier">
 					<select name="type" form="modifiers-form">

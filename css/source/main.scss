@@ -83,35 +83,33 @@ body {
 }
 
 .input-section {
-	border-bottom: 0.333333333em dotted $color-green;
+	border-bottom: 0.15em solid lighten($color-blue, 10%);
 	color: $color-white;
 	margin-bottom: 2em;
 	padding-bottom: .5em;
-	padding-right: 2.68em;
 	position: relative;
 }
 
 .input-section-remove {
 	background-color: $color-green;
 	color: $color-white;
-	display: block;
+	display: inline-block;
 	font-family: sans-serif;
 	font-size: 2em;
-	height: 1.125em;
+	height: 1.1em;
 	line-height: 1;
-	position: absolute;
-	right: 0;
 	text-align: center;
 	text-decoration: none;
-	top: 0;
 	width: 1.125em;
 }
 
 .input {
+	float: left;
 	border: none;
 	border-radius: 0;
 	font-size: 1.125em;
 	line-height: 1.95;
+	margin-right: -2em;
 	margin-bottom: 0.444444444em;
 	outline: none;
 	padding: 0 .5em;
