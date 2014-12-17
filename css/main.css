@@ -129,19 +129,21 @@ h2 {
 @media screen and (min-width: 48em) {
 
 	.input-sections {
+		display: -webkit-flex;
 		display: flex;
-		flex-flow(row);
+		-webkit-flex-flow: row wrap;
+		flex-flow: row wrap;
 	}
 
 	.input-section {
-		width: 50%;
+		width: 49%;
 	}
 
 	.input-section:nth-child(odd) {
-		margin-right: 1em;
+		margin-right: 1%;
 	}
 
 	.input-section:nth-child(even) {
-		margin-left: 1em;
+		margin-left: 1%;
 	}
 }
