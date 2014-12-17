@@ -40,7 +40,7 @@ body {
     font-style: italic;
     font-size: 1.125em;
     margin: .25em 0 0.75em;
-    color: lighten($color-blue, 20%);
+    color: rgba($color-blue, .7);
     text-align: center;
 }
 
@@ -79,6 +79,8 @@ body {
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
+	transition: background .2s;
+	&:hover { background: darken($color-green, 10%); }
 }
 
 .action-buttons {
@@ -113,6 +115,8 @@ body {
 	text-align: center;
 	text-decoration: none;
 	width: 1.125em;
+	transition: background .2s;
+	&:hover { background: darken($color-green, 10%); }
 }
 
 .input-field-wrapper {
@@ -148,6 +152,11 @@ body {
 	
 }
 
+.input-section-required {
+	vertical-align: middle;
+	margin: 0 .5em .25em 0;
+}
+
 @media screen and (min-width: 40em) {
 
 	.action-buttons {
@@ -162,7 +171,7 @@ body {
 	.site-description {
 		text-align: left;
 	}
-	
+
 	.input-sections {
 		display: flex;
 		flex-flow: row wrap;
