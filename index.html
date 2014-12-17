@@ -9,24 +9,23 @@
 </head>
 <body>
 	
-	<header class="header">
+	<form class="modifiers-form" id="modifiers-form"></form>
+	<form class="input-sections-form">
+		<header class="header">
+			<div class="centered">
+				<h1 class="site-name">Input Type Sandbox</h1>
+				<h2 class="site-description">A testing tool for form input types, patterns and other attributes</h2>
+				<a class="button input-section-add" href="#">Add an Input</a>
+				<button class="button" href="#" type="submit">Test Validation</button>
+			</div>
+		</header>
 		<div class="centered">
-			<h1>Input Type Sandbox</h1>
-			<h2>A testing tool for form input types, patterns and other attributes</h2>
-			<a class="button input-section-add" href="#">Add an Input</a>
+			<div class="content">
+				<div class="error-messages"></div>
+				<div class="input-sections"></div>
+			</div>
 		</div>
-	</header>
-	<div class="centered">
-		<div class="content">
-			<div class="error-messages"></div>
-			<form class="modifiers-form" id="modifiers-form"></form>
-			<form>
-				<div class="input-sections">
-				</div>
-				<button class="button" type="submit">Test Validation</button>
-			</form>
-		</div>
-	</div>
+	</form>
 
 	<script id="input_section_template" type="text/html">
 		<section class="input-section">
@@ -71,6 +70,9 @@
 						<option value="[0-9]*"<% if (pattern == '[0-9]*') { %> selected<% } %>>Numbers only - [0-9]*</option>
 						<option value="(\d{5}?)"<% if (pattern == '(\d{5}?)') { %> selected<% } %>>Short Zip Code - (\d{5}?)</option>
 						<option value="(\d{5}([\-]\d{4})?)"<% if (pattern == '(\d{5}([\-]\d{4})?)') { %> selected<% } %>>Extended Zip Code - (\d{5}([\-]\d{4})?)</option>
+						<option value="[0-9]{13,16}"<% if (pattern == '[0-9]{13,16}') { %> selected<% } %>>Credit/Bank Account - [0-9]{13,16}</option>
+						<option value="[a-zA-Z0-9]+"<% if (pattern == '[a-zA-Z0-9]+') { %> selected<% } %>>Alphanumber (No Spaces) - [a-zA-Z0-9]+</option>
+						<option value="[a-zA-Z0-9]+\s"<% if (pattern == '[a-zA-Z0-9]+\s') { %> selected<% } %>>Alphanumber (With Spaces) - [a-zA-Z0-9]+\s</option>
 					</select>
 				</div>
 				<div class="input-section-modifier">

@@ -17,34 +17,28 @@ body {
 	background-color: $color-blue;
     font-family: $font-family-droid;
     font-size: $base-font-size;
-    line-height: 23px;
-    margin: 0 0 23px 0;
+    line-height: 1.2;
 }
 
 .header {
 	background-color: $color-tan;
+	color: $color-blue;
 	padding: $spacing-vertical;
-	position: relative;
 }
 
-h1 {
-	color: $color-blue;
+.site-name {
 	font-family: $font-family-oswald;
     font-weight: 700;
-    line-height: 51px;
     font-size: 2em;
     text-transform: uppercase;
-    margin: 0;
 }
 
-h2 {
-	color: $color-blue;
+.site-description {
 	font-family: $font-family-droid;
     font-weight: 400;
     font-style: italic;
     font-size: 1.125em;
-    line-height: 23px;
-    margin: 0 0 10px 0;
+    margin-bottom: 0.666666667em;
 }
 
 .centered {
@@ -53,7 +47,7 @@ h2 {
 }
 
 .content {
-	padding: .5em;
+	padding: 0 .5em .5em;
 }
 
 .error-messages {
@@ -61,10 +55,11 @@ h2 {
 	min-height: 2em;
 	opacity: 0;
 	transition: opacity 1000ms;
-}
 
-.error-messages.active {
-	opacity: 1;
+	&.active {
+		opacity: 1;
+	}
+
 }
 
 .button {
@@ -88,7 +83,7 @@ h2 {
 }
 
 .input-section {
-	border-bottom: 5px dotted $color-green;
+	border-bottom: 0.333333333em dotted $color-green;
 	color: $color-white;
 	margin-bottom: 2em;
 	padding-bottom: .5em;
@@ -151,11 +146,11 @@ h2 {
 @media screen and (min-width: 48em) {
 
 	.content {
-		padding: .5em 0;
+		padding: 0;
 	}
 	
 	.centered {
-		padding: .5em;
+		padding: 0 .5em;
 	}
 
 	.input-sections {
