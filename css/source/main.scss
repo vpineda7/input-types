@@ -12,14 +12,12 @@ html {
 *:after {
 	box-sizing: inherit;
 }
-
 body {
 	background-color: $color-blue;
     font-family: $font-family-droid;
     font-size: $base-font-size;
     line-height: 1.2;
 }
-
 .header {
 	background-color: $color-tan;
 	color: $color-blue;
