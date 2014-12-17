@@ -1,0 +1,160 @@
+@import "reset",
+	url(//fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic),
+	"variables";
+
+
+/* http://coolors.co/454851-73956f-7bae7f-95d7ae-cdc5b4 */
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	background-color: $color-blue;
+    font-family: $font-family-droid;
+    font-size: $base-font-size;
+    line-height: 23px;
+    margin: 0 0 23px 0;
+}
+
+.header {
+	background-color: $color-tan;
+	padding: .5em;
+	position: relative;
+}
+
+h1 {
+	color: $color-blue;
+	font-family: $font-family-oswald;
+    font-weight: 700;
+    line-height: 51px;
+    font-size: 2em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+h2 {
+	color: $color-blue;
+	font-family: $font-family-droid;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.125em;
+    line-height: 23px;
+    margin: 0 0 10px 0;
+}
+
+.centered {
+	margin: 0 auto;
+	max-width: 60em;
+}
+
+.content {
+	padding: .5em;
+}
+
+.error-messages {
+	color: $color-orange;
+	min-height: 2em;
+	opacity: 0;
+	-webkit-transition: opacity 1000ms;
+}
+
+.error-messages.active {
+	opacity: 1;
+}
+
+.button {
+	background-color: $color-green;
+	border: none;
+	color: $color-white;
+	display: inline-block;
+	font-family: $font-family-droid;
+	font-size: 1em;
+	outline: none;
+	padding: .6em 1em;
+	text-decoration: none;
+}
+
+.modifiers-form {
+	display: none;
+}
+
+.input-sections:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+
+.input-section {
+	border-bottom: 5px dotted $color-green;
+	color: $color-white;
+	margin-bottom: 2em;
+	padding-bottom: .5em;
+	padding-right: 2.68em;
+	position: relative;
+}
+
+.input-section-remove {
+	background-color: $color-green;
+	color: $color-white;
+	display: block;
+	font-family: sans-serif;
+	font-size: 2em;
+	height: 1.125em;
+	line-height: 1;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	text-decoration: none;
+	top: 0;
+	width: 1.125em;
+}
+
+.input {
+	border: none;
+	border-radius: 0;
+	font-size: 1.125em;
+	line-height: 1.95;
+	margin-bottom: 0.444444444em;
+	outline: none;
+	padding: 0 .5em;
+	width: 100%;
+}
+
+.input-section-modifier select {
+	width: 50%;
+}
+
+@media screen and (min-width: 48em) {
+
+	.content {
+		padding: .5em 0;
+	}
+	
+	.centered {
+		padding: .5em;
+	}
+
+	.input-sections {
+		display: flex;
+		flex-flow: row wrap;
+	}
+
+	.input-section {
+		width: 49%;
+	}
+
+	.input-section:nth-child(odd) {
+		margin-right: 1%;
+	}
+
+	.input-section:nth-child(even) {
+		margin-left: 1%;
+	}
+}
