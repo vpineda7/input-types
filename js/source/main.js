@@ -71,11 +71,9 @@
 
         removeSection: function(e) {
             e.preventDefault();
-            if (confirm('Are you sure?') == true) {
-                var self = $(e.currentTarget);
-                self.closest('.input-section').remove();
-                this.buildNewUrl();
-            }
+            var self = $(e.currentTarget);
+            self.closest('.input-section').remove();
+            this.buildNewUrl();
         },
 
         getPropertyNameAndValue: function(e) {
