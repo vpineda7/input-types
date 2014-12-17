@@ -93,7 +93,7 @@
         },
 
         applyPropertyChange: function(element, properties) {
-            var input = element.closest('.input-section-modifiers').siblings('.input');
+            var input = element.closest('.input-section-modifiers').siblings('.input-field-wrapper').find('.input');
             if (properties.value == '') {
                 input.removeAttr(properties.name);
             }

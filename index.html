@@ -31,22 +31,24 @@
 
 	<script id="input_section_template" type="text/html">
 		<section class="input-section">
-			<input class="input" 
-				type="<%=type%>"
-				<% if (value) { %>
-					value="<%=value%>"
-				<% } %>
-				<% if (pattern) { %>
-					pattern="<%=pattern%>"
-				<% } %>
-				<% if (placeholder) { %>
-					placeholder="<%=placeholder%>"
-				<% } %>
-				<% if (required) { %>
-					required
-				<% } %>
-			>
-			<a class="input-section-remove" href="#">x</a>
+			<div class="input-field-wrapper">
+				<input class="input" 
+					type="<%=type%>"
+					<% if (value) { %>
+						value="<%=value%>"
+					<% } %>
+					<% if (pattern) { %>
+						pattern="<%=pattern%>"
+					<% } %>
+					<% if (placeholder) { %>
+						placeholder="<%=placeholder%>"
+					<% } %>
+					<% if (required) { %>
+						required
+					<% } %>
+				>
+				<a class="input-section-remove" href="#">x</a>
+			</div>
 			<div class="input-section-modifiers">
 				<div class="input-section-modifier">
 					<select name="type" form="modifiers-form">
