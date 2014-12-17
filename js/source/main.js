@@ -6,6 +6,7 @@
 
         init: function() {
             this.resultsSection = $('.input-sections');
+            this.inputSectionsForm = $('.input-sections-form');
             this.defaultInputValues = {
                 "pattern": "",
                 "placeholder": "",
