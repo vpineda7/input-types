@@ -25,13 +25,18 @@ body {
 	background-color: $color-tan;
 	padding: $spacing-vertical;
 	position: relative;
+
+	.centered {
+		padding: 0 $spacing-vertical;
+	}
+
 }
 
 h1 {
 	color: $color-blue;
 	font-family: $font-family-oswald;
     font-weight: 700;
-    line-height: 51px;
+    line-height: 1.2;
     font-size: 2em;
     text-transform: uppercase;
     margin: 0;
