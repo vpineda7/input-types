@@ -7,3 +7,21 @@
 	}
 
 }
+
+%sidebyside-half {
+
+	> * {
+		float: left;
+		width: 49%;
+
+		&:nth-child(odd) {
+			margin-right: 1%;
+		}
+
+		&:nth-child(even) {
+			margin-left: 1%;
+		}
+	
+	}
+
+}
