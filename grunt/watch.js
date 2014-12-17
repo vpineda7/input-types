@@ -1,7 +1,7 @@
 module.exports = {
   sass: {
     files: ["<%= paths.source.css %>/**/*.scss"],
-    tasks: ["sass"],
+    tasks: ["sass","autoprefixer"],
     options: {
       "spawn": true
     }

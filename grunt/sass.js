@@ -1,12 +1,20 @@
 module.exports = {
-  dist: {
-      files: {
-        '<%= paths.dest.css %>/main.css': '<%= paths.source.css %>/main.scss'
-      },
-      options: {
-        'sourcemap': 'none',
-        'style': 'compressed'
-      }
-    }
-  
+	"dev": {
+		"options": {
+			"sourcemap": "none",
+			"style": "compressed",            
+			"require": [
+				"sass-globbing"
+			]
+		},
+		"files":  [
+			{
+				expand: true,
+				cwd: "<%= paths.source.css %>",
+				src: ['*.scss'],
+				dest: "<%= paths.dest.css %>",
+				ext: ".css"
+			}
+		]
+	}
 };

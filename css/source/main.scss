@@ -1,5 +1,6 @@
 @import "reset",
-	url(//fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic);
+	url(//fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic),
+	"variables";
 
 
 /* http://coolors.co/454851-73956f-7bae7f-95d7ae-cdc5b4 */
@@ -15,22 +16,22 @@ html {
 }
 
 body {
-	background-color: #454851;
-    font-family: 'Droid Serif', serif;
-    font-size: 15px;
+	background-color: $color-blue;
+    font-family: $font-family-droid;
+    font-size: $base-font-size;
     line-height: 23px;
     margin: 0 0 23px 0;
 }
 
 .header {
-	background-color: #cdc5b4;
+	background-color: $color-tan;
 	padding: .5em;
 	position: relative;
 }
 
 h1 {
-	color: #454851;
-	font-family: 'Oswald', sans-serif;
+	color: $color-blue;
+	font-family: $font-family-oswald;
     font-weight: 700;
     line-height: 51px;
     font-size: 2em;
@@ -39,8 +40,8 @@ h1 {
 }
 
 h2 {
-	color: #454851;
-	font-family: 'Droid Serif', serif;
+	color: $color-blue;
+	font-family: $font-family-droid;
     font-weight: 400;
     font-style: italic;
     font-size: 1.125em;
@@ -58,7 +59,7 @@ h2 {
 }
 
 .error-messages {
-	color: #ffa630;
+	color: $color-orange;
 	min-height: 2em;
 	opacity: 0;
 	-webkit-transition: opacity 1000ms;
@@ -69,11 +70,11 @@ h2 {
 }
 
 .button {
-	background-color: #73956f;
+	background-color: $color-green;
 	border: none;
-	color: #fff;
+	color: $color-white;
 	display: inline-block;
-	font-family: 'Droid Serif', serif;
+	font-family: $font-family-droid;
 	font-size: 1em;
 	outline: none;
 	padding: .6em 1em;
@@ -91,8 +92,8 @@ h2 {
 }
 
 .input-section {
-	border-bottom: 5px dotted #73956f;
-	color: #FCEFF9;
+	border-bottom: 5px dotted $color-green;
+	color: $color-white;
 	margin-bottom: 2em;
 	padding-bottom: .5em;
 	padding-right: 2.68em;
@@ -100,8 +101,8 @@ h2 {
 }
 
 .input-section-remove {
-	background-color: #73956f;
-	color: #fceff9;
+	background-color: $color-green;
+	color: $color-white;
 	display: block;
 	font-family: sans-serif;
 	font-size: 2em;
@@ -141,9 +142,7 @@ h2 {
 	}
 
 	.input-sections {
-		display: -webkit-flex;
 		display: flex;
-		-webkit-flex-flow: row wrap;
 		flex-flow: row wrap;
 	}
 
