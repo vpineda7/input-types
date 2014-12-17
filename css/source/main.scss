@@ -123,8 +123,29 @@ h2 {
 	width: 100%;
 }
 
-.input-section-modifier select {
-	width: 50%;
+.input-section-modifiers {
+	@extend %clearfix;
+}
+
+.input-section-modifier {
+	float: left;
+	margin-bottom: .5em;
+	width: 49%;
+
+	&:nth-child(odd) {
+		margin-right: 1%;
+	}
+
+	&:nth-child(even) {
+		margin-left: 1%;
+	}
+
+	select {
+		height: 2.5em;
+		width: 100%;
+		-webkit-appearance: menulist-button;
+	}
+	
 }
 
 @media screen and (min-width: 48em) {
