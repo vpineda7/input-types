@@ -20,7 +20,7 @@
                 "tel"
             ];
 
-            this.addSection(this.buildInputData(true));
+            this.addSection(this.buildInputData(true), false, false);
             this.bindEvents();
         },
 
@@ -53,10 +53,10 @@
 
         onAddClick: function(e) {
             e.preventDefault();
-            this.addSection(this.buildInputData(), true);
+            this.addSection(this.buildInputData(), true, true);
         },
 
-        addSection: function(data, isReversed) {
+        addSection: function(data, isReversed, addToUrl) {
             for (var i = 0; i < data.length; i++) {
                 var rendered = tmpl("input_section_template", data[i]);
                 if (isReversed) {
@@ -66,7 +66,9 @@
                 }
             }
             this.resultsSection.find('.input-section').first().find('.input').focus();
-            this.buildNewUrl();
+            if (addToUrl != false) {
+                this.buildNewUrl();
+            }
         },
 
         removeSection: function(e) {
