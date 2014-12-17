@@ -18,14 +18,16 @@
 			<a class="button input-section-add" href="#">Add an Input</a>
 		</div>
 	</header>
-	<div class="centered content">
-		<div class="error-messages"></div>
-		<form class="modifiers-form" id="modifiers-form"></form>
-		<form>
-			<div class="input-sections">
-			</div>
-			<button class="button" type="submit">Test Validation</button>
-		</form>
+	<div class="centered">
+		<div class="content">
+			<div class="error-messages"></div>
+			<form class="modifiers-form" id="modifiers-form"></form>
+			<form>
+				<div class="input-sections">
+				</div>
+				<button class="button" type="submit">Test Validation</button>
+			</form>
+		</div>
 	</div>
 
 	<script id="input_section_template" type="text/html">
@@ -52,6 +54,9 @@
 						<option value="text"<% if (type == 'text') { %> selected<% } %>>Text</option>
 						<option value="number"<% if (type == 'number') { %> selected<% } %>>Number</option>
 						<option value="tel"<% if (type == 'tel') { %> selected<% } %>>Telephone</option>
+						<option value="email"<% if (type == 'email') { %> selected<% } %>>Email</option>
+						<option value="url"<% if (type == 'url') { %> selected<% } %>>URL</option>
+						<option value="search"<% if (type == 'search') { %> selected<% } %>>Search</option>
 					</select>
 				</div>
 				<div class="input-section-modifier">
