@@ -53,6 +53,7 @@ body {
 .error-messages {
 	color: $color-orange;
 	min-height: 2em;
+	line-height: 2em;
 	opacity: 0;
 	transition: opacity 1000ms;
 
