@@ -116,8 +116,11 @@ a.button {
 	
 	&:hover { 
 		background: darken($color-green, 10%);
+<<<<<<< HEAD
 		color: $color-white;
 		text-decoration: none;
+=======
+>>>>>>> fff1e556a7a0f4fff6710302d5aacf4e68b11713
 	}
 
 }
