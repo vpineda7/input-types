@@ -23,7 +23,7 @@ a {
 	text-decoration: none;
 	transition: color $transition-time;
 	
-	&:hover {
+	&:hover, &:visited {
 		color: darken($color-green, 10%);
 	}
 
