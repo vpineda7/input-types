@@ -65,7 +65,7 @@
                     this.resultsSection.append(rendered);
                 }
             }
-            this.resultsSection.find('.input-section').first().find('.input').focus();
+            // this.resultsSection.find('.input-section').first().find('.input').focus();
             if (addToUrl != false) {
                 this.buildNewUrl();
             }
