@@ -72,11 +72,12 @@
 					<select name="pattern" form="modifiers-form">
 						<option value="">No Pattern</option>
 						<option value="[0-9]*"<% if (pattern == '[0-9]*') { %> selected<% } %>>Numbers only - [0-9]*</option>
-						<option value="(\d{5}?)"<% if (pattern == '(\d{5}?)') { %> selected<% } %>>Short Zip Code - (\d{5}?)</option>
-						<option value="(\d{5}([\-]\d{4})?)"<% if (pattern == '(\d{5}([\-]\d{4})?)') { %> selected<% } %>>Extended Zip Code - (\d{5}([\-]\d{4})?)</option>
+						<option value="(\\d{5}?)"<% if (pattern == '(\\d{5}?)') { %> selected<% } %>>Short Zip Code - (\\d{5}?)</option>
+						<option value="(\\d{5}([\\-]\\d{4})?)"<% if (pattern == '(\\d{5}([\\-]\\d{4})?)') { %> selected<% } %>>Extended Zip Code - (\\d{5}([\\-]\\d{4})?)</option>
 						<option value="[0-9]{13,16}"<% if (pattern == '[0-9]{13,16}') { %> selected<% } %>>Credit/Bank Account - [0-9]{13,16}</option>
 						<option value="[a-zA-Z0-9]+"<% if (pattern == '[a-zA-Z0-9]+') { %> selected<% } %>>Alphanumber (No Spaces) - [a-zA-Z0-9]+</option>
-						<option value="[a-zA-Z0-9]+\s"<% if (pattern == '[a-zA-Z0-9]+\s') { %> selected<% } %>>Alphanumber (With Spaces) - [a-zA-Z0-9]+\s</option>
+						<option value="[a-zA-Z0-9]+\\s"<% if (pattern == '[a-zA-Z0-9]+\\s') { %> selected<% } %>>Alphanumber (With Spaces) - [a-zA-Z0-9]+\\s</option>
+						<option value="\\^\\d{3}-\\d{2}-\\d{4}$"<% if (pattern == '\\^\\d{3}-\\d{2}-\\d{4}$') { %> selected<% } %>>Social Security Number - \\^\\d{3}-\\d{2}-\\d{4}$</option>
 					</select>
 				</div>
 				<div class="input-section-modifier">
