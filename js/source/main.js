@@ -34,6 +34,7 @@
         bindEvents: function() {
             this.bindFastClick();
             $('.input-section-add').on('click', $.proxy(this.onAddClick, this));
+            this.inputSectionsForm.on('submit', $.proxy(this.onSuccessfulFormSubmit, this));
             $(document).on('click', '.input-section-remove', $.proxy(this.removeSection, this));
             $(document).on('change', '.input-section-modifiers select, .input-section-modifiers input', $.proxy(this.getPropertyNameAndValue, this));
         },
@@ -140,8 +141,13 @@
             }
         },
 
+        onSuccessfulFormSubmit: function(e) {
+            e.preventDefault();
+            this.showMessage('Form submitted; no validation errors.');
+        },
+
         showMessage: function(message) {
-            $('.messages').append(message + '<br>').addClass('active');
+            $('.messages').html(message + '<br>').addClass('active');
             setTimeout(function(errorContainer) {
                   $('.messages').removeClass('active');
             }, 4000);
