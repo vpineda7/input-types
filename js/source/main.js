@@ -1,12 +1,14 @@
-(function($, window, document) {
+(function(window, document) {
 
     window.IT = window.IT || {};
 
     IT.Global = {
 
         init: function() {
-            this.resultsSection = $('.input-sections');
-            this.inputSectionsForm = $('.input-sections-form');
+            this.resultsSection = document.querySelector('.input-sections');
+            this.inputSectionsForm = document.querySelector('.input-sections-form');
+            this.inputSectionTemplate = tmpl("input_section_template");
+            this.messageContainer = document.querySelector('.messages');
             this.welcomeMessageAlreadyLoaded = false;
             this.defaultInputValues = {
                 "pattern": "",
@@ -20,23 +22,58 @@
                 "number",
                 "tel"
             ];
+            this.allowedInputAttributes = [
+                'type',
+                'step',
+                'placeholder',
+                'step',
+                'required',
+                'pattern'
+            ];
 
             this.addSection(this.buildInputData(true), false, false);
             this.bindEvents();
         },
 
         bindFastClick: function() {
-            $(function() {
-                FastClick.attach(document.body);
-            });
+            FastClick.attach(document.body);           
         },
 
         bindEvents: function() {
             this.bindFastClick();
-            $('.input-section-add').on('click', $.proxy(this.onAddClick, this));
-            this.inputSectionsForm.on('submit', $.proxy(this.onSuccessfulFormSubmit, this));
-            $(document).on('click', '.input-section-remove', $.proxy(this.removeSection, this));
-            $(document).on('change', '.input-section-modifiers select, .input-section-modifiers input', $.proxy(this.getPropertyNameAndValue, this));
+            var self = this;
+
+            var inputSectionAddButton = document.querySelector('.input-section-add');
+            inputSectionAddButton.addEventListener('click', function(e) {
+                self.onAddClick(e);
+            });
+            
+            this.inputSectionsForm.addEventListener('submit', function(e) {
+                self.onSuccessfulFormSubmit(e);
+            });
+
+            document.addEventListener('click', function(e) {
+                self._onDocumentClick(e);
+            });
+
+            document.addEventListener('change', function(e) {
+                self._onDocumentChange(e);
+            });
+
+        },
+
+        _onDocumentClick: function(e) {
+            var classList = e.target.classList;
+            if(classList.contains('input-section-remove'))
+                this.removeSection(e);
+        },
+
+        _onDocumentChange: function(e) {
+            var classList = e.target.classList;
+            if(classList.contains('input-section-modifier-type') || 
+                classList.contains('input-section-modifier-pattern') || 
+                classList.contains('input-section-required'))
+                this.getPropertyNameAndValue(e);
         },
 
         buildInputData: function(checkUrl) {
@@ -58,16 +95,23 @@
             this.addSection(this.buildInputData(), true, true);
         },
 
-        addSection: function(data, isReversed, addToUrl) {
+        addSection: function(data, prepend, addToUrl) {
+            var inputSectionsHtml = '';
+
             for (var i = 0; i < data.length; i++) {
-                var rendered = tmpl("input_section_template", data[i]);
-                if (isReversed) {
-                    this.resultsSection.prepend(rendered);
+                var inputSectionHtml = this.inputSectionTemplate(data[i]);
+                if (prepend) {
+                    inputSectionsHtml = inputSectionHtml + inputSectionsHtml;
                 } else {
-                    this.resultsSection.append(rendered);
+                    inputSectionsHtml += inputSectionHtml;
                 }
             }
-            // this.resultsSection.find('.input-section').first().find('.input').focus();
+
+            var insertPosition = prepend ? 'afterbegin' : 'beforeend';
+           
+            this.resultsSection.insertAdjacentHTML(insertPosition, inputSectionsHtml);
+
+
             if (addToUrl != false) {
                 this.buildNewUrl();
             }
@@ -75,34 +119,35 @@
 
         removeSection: function(e) {
             e.preventDefault();
-            var self = $(e.currentTarget);
-            self.closest('.input-section').remove();
+            var inputSection = this._getParent(e.target, 'input-section');
+            inputSection.parentNode.removeChild(inputSection);
             this.buildNewUrl();
         },
 
         getPropertyNameAndValue: function(e) {
-            var self = $(e.currentTarget);
+            var element = e.target;
             var modifierProperties = {};
-            modifierProperties.name = self.attr('name');
-            if (self.attr('type') == 'checkbox') {
-                if (!self.is(':checked')) {
+            modifierProperties.name = element.getAttribute('name');
+            if (element.getAttribute('type') == 'checkbox') {
+                if (!element.checked) {
                     modifierProperties.value = '';
                 } else {
                     modifierProperties.value = 'required';
                 }
             } else {
-                modifierProperties.value = self.val();
+                modifierProperties.value = element.value;
             }
-            this.applyPropertyChange(self, modifierProperties);
+            this.applyPropertyChange(element, modifierProperties);
         },
 
         applyPropertyChange: function(element, properties) {
-            var input = element.closest('.input-section-modifiers').siblings('.input-field-wrapper').find('.input');
+            var inputSection = this._getParent(element, 'input-section');
+            var input = inputSection.querySelector('.input');
             if (properties.value == '') {
-                input.removeAttr(properties.name);
+                input.removeAttribute(properties.name);
             }
             else {
-                input.prop(properties.name,properties.value);
+                input.setAttribute(properties.name,properties.value);
             }
             this.buildNewUrl();
             
@@ -110,29 +155,27 @@
 
         buildNewUrl: function() {
             if (history.pushState) {
-                var allInputs = this.resultsSection.find('.input');
+                var allInputs = this.resultsSection.querySelectorAll('.input');
                 var allInputValues = [];
-                allInputs.each(function() {
+
+                for(var i = 0; i < allInputs.length; i++) {
                     var inputVals = {};
-                    var allowedTypes = [
-                        'type',
-                        'step',
-                        'placeholder',
-                        'step',
-                        'required',
-                        'pattern'
-                    ];
-                    $(this.attributes).each(function() {
-                        if (allowedTypes.indexOf(this.nodeName) != -1) {
-                            if (this.nodeName == 'required') {
-                                inputVals[this.nodeName] = 'required';
+                    var input = allInputs[i];
+                    var atts = input.attributes;
+
+                    for(var j = 0; j < atts.length; j++){
+                        var att = atts[j];
+                        if (this.allowedInputAttributes.indexOf(att.name) != -1) {                            
+                            if (att.name == 'required') {
+                                inputVals[att.name] = 'required';
                             } else {
-                                inputVals[this.nodeName] = this.value;
+                                inputVals[att.name] = att.value;
                             }
                         }
-                    });
+                    }
                     allInputValues.push(inputVals);
-                });
+                }
+                
                 var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
                 if (allInputValues.length > 0) {
                     newUrl = newUrl + '?inputs=' + encodeURIComponent(JSON.stringify(allInputValues));
@@ -147,9 +190,11 @@
         },
 
         showMessage: function(message) {
-            $('.messages').html(message + '<br>').addClass('active');
+            this.messageContainer.innerHTML = message + '<br>';
+            this.messageContainer.classList.add('active');
+            var self = this;
             setTimeout(function(errorContainer) {
-                  $('.messages').removeClass('active');
+                  self.messageContainer.classList.remove('active');
             }, 4000);
         },
 
@@ -177,6 +222,16 @@
             return false;
         },
 
+        _getParent: function(element, className) {
+            for ( ; element && element !== document; element = element.parentNode ) {
+                if ( element.classList.contains(className) ) {
+                    return element;
+                }
+            }
+
+            return null;
+        },
+
         _extendObjects: function(out) {
             
             out = out || {};
@@ -196,4 +251,4 @@
 
     IT.Global.init();
 
-})(jQuery, window, document);
+})(window, document);
