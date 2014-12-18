@@ -39,7 +39,7 @@ body {
 .header {
 	background-color: $color-tan;
 	color: $color-blue;
-	padding: $spacing-vertical;
+	padding: $spacing-vertical 0;
 	position: relative;
 	z-index: 1;
 }
@@ -73,12 +73,13 @@ body {
 
 .content {
 	background-color: $color-blue;
-	padding: 0 $spacing-horizontal $spacing-vertical;
+	min-height: calc(100vh - #{$footer-height});
 }
 
 .centered {
 	margin: 0 auto;
 	max-width: 60em;
+	padding: 0 $spacing-horizontal $spacing-vertical;
 }
 
 .messages {
@@ -209,6 +210,7 @@ a.button {
 }
 
 .footer {
+	min-height: $footer-height;
 	padding: $spacing-vertical*2 0;
 	text-align: center;
 	a {
@@ -305,10 +307,6 @@ a.button {
 	.site-name,
 	.site-description {
 		text-align: left;
-	}
-
-	.content {
-		min-height: 33.333333333em;
 	}
 
 	.input-sections {
