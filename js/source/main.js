@@ -11,7 +11,7 @@
                 "pattern": "",
                 "placeholder": "",
                 "required": "",
-                "type": "text",
+                "type": "",
                 "value": ""
             };
             this.defaultTypes = [
