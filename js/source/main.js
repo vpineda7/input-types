@@ -7,6 +7,7 @@
         init: function() {
             this.resultsSection = $('.input-sections');
             this.inputSectionsForm = $('.input-sections-form');
+            this.linkMessageHasBeenDisplayed = false;
             this.defaultInputValues = {
                 "pattern": "",
                 "placeholder": "",
@@ -139,10 +140,10 @@
             }
         },
 
-        showError: function(message) {
-            $('.error-messages').html(message).addClass('active');
+        showMessage: function(message) {
+            $('.messages').html(message).addClass('active');
             setTimeout(function(errorContainer) {
-                  $('.error-messages').removeClass('active');
+                  $('.messages').removeClass('active');
             }, 4000);
         },
 
@@ -164,7 +165,7 @@
                 }
             }
             catch (e) { 
-                this.showError('The JSON in your URL is invalid.');
+                this.showMessage('The JSON in your URL is invalid.');
             }
 
             return false;

@@ -51,7 +51,7 @@ body {
 	max-width: 60em;
 }
 
-.error-messages {
+.messages {
 	color: $color-orange;
 	line-height: 2;
 	min-height: 2em;
@@ -146,6 +146,11 @@ body {
 		height: 2.5em;
 		width: 100%;
 		-webkit-appearance: menulist-button;
+	}
+
+	&.input-section-modifier-full {
+		margin-right: 0;
+		width: 100%;
 	}
 	
 }
