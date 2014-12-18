@@ -23,8 +23,11 @@ a {
 	text-decoration: none;
 	transition: color $transition-time;
 	
-	&:hover, &:visited {
+	&:hover, &:visited:hover {
 		color: darken($color-green, 10%);
+	}
+	&:visited {
+		color: lighten($color-green, 10%);
 	}
 
 }
@@ -308,7 +311,12 @@ a.button {
 	.site-description {
 		text-align: left;
 	}
-
+	.site-name {
+		font-size: 2.5em;
+	}
+	.site-description {
+		font-size: 1.25em;
+	}
 	.input-sections {
 		display: flex;
 		flex-flow: row wrap;
