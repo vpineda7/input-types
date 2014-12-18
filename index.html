@@ -53,7 +53,7 @@
 			</div>
 			<div class="input-section-modifiers">
 				<div class="input-section-modifier">
-					<select name="type" id="input-section-modifier-type" form="modifiers-form">
+					<select name="type" id="input-section-modifier-type" class="input-section-modifier-type" form="modifiers-form">
 						<option disabled selected>Set Input Type</option>
 						<option value="text"<% if (type == 'text') { %> selected<% } %>>Text</option>
 						<option value="number"<% if (type == 'number') { %> selected<% } %>>Number</option>
@@ -72,7 +72,7 @@
 					</select>
 				</div>
 				<div class="input-section-modifier">
-					<select name="pattern" id="input-section-modifier-type" form="modifiers-form">
+					<select name="pattern" id="input-section-modifier-type" class="input-section-modifier-pattern" form="modifiers-form">
 						<option disabled selected>Set Validation Pattern</option>
 						<option value="">No Pattern</option>
 						<option value="[0-9]*"<% if (pattern == '[0-9]*') { %> selected<% } %>>Numbers only - [0-9]*</option>
