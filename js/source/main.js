@@ -131,8 +131,11 @@
                     });
                     allInputValues.push(inputVals);
                 });
-                var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?inputs=' + encodeURIComponent(JSON.stringify(allInputValues));
-                window.history.pushState({path:newurl},'',newurl);
+                var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                if (allInputValues.length > 0) {
+                    newUrl = newUrl + '?inputs=' + encodeURIComponent(JSON.stringify(allInputValues));
+                }
+                window.history.pushState({path:newUrl},'',newUrl);
             }
         },
 
