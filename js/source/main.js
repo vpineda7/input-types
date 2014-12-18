@@ -7,6 +7,7 @@
         init: function() {
             this.resultsSection = $('.input-sections');
             this.inputSectionsForm = $('.input-sections-form');
+            this.welcomeMessageAlreadyLoaded = false;
             this.defaultInputValues = {
                 "pattern": "",
                 "placeholder": "",
@@ -140,7 +141,7 @@
         },
 
         showMessage: function(message) {
-            $('.messages').html(message).addClass('active');
+            $('.messages').append(message + '<br>').addClass('active');
             setTimeout(function(errorContainer) {
                   $('.messages').removeClass('active');
             }, 4000);
