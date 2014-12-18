@@ -7,7 +7,6 @@
         init: function() {
             this.resultsSection = $('.input-sections');
             this.inputSectionsForm = $('.input-sections-form');
-            this.linkMessageHasBeenDisplayed = false;
             this.defaultInputValues = {
                 "pattern": "",
                 "placeholder": "",
