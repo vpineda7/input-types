@@ -154,7 +154,11 @@ a.button {
 	text-decoration: none;
 	width: 1.125em;
 	transition: background .2s;
-	&:hover { background: darken($color-green, 10%); }
+
+	&:hover { 
+		background: darken($color-green, 10%);
+		color: $color-white;
+	}
 }
 
 .input-field-wrapper {
