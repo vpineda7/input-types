@@ -152,7 +152,7 @@
             var inputMarkup = input.outerHTML;
             inputMarkup = inputMarkup.replace('<','&lt;');
             inputMarkup = inputMarkup.replace('>','&gt;');
-            inputMarkup = inputMarkup.replace('class="input" ', '');
+            inputMarkup = inputMarkup.replace(' class="input"', '');
             output.innerHTML = inputMarkup;
             this.buildNewUrl();
             
