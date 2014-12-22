@@ -108,9 +108,8 @@
             }
 
             var insertPosition = prepend ? 'afterbegin' : 'beforeend';
-           
-            this.resultsSection.insertAdjacentHTML(insertPosition, inputSectionsHtml);
 
+            this.resultsSection.insertAdjacentHTML(insertPosition, inputSectionsHtml);
 
             if (addToUrl != false) {
                 this.buildNewUrl();
@@ -143,12 +142,18 @@
         applyPropertyChange: function(element, properties) {
             var inputSection = this._getParent(element, 'input-section');
             var input = inputSection.querySelector('.input');
+            var output = inputSection.querySelector('.input-output');
             if (properties.value == '') {
                 input.removeAttribute(properties.name);
             }
             else {
                 input.setAttribute(properties.name,properties.value);
             }
+            var inputMarkup = input.outerHTML;
+            inputMarkup = inputMarkup.replace('<','&lt;');
+            inputMarkup = inputMarkup.replace('>','&gt;');
+            inputMarkup = inputMarkup.replace('class="input" ', '');
+            output.innerHTML = inputMarkup;
             this.buildNewUrl();
             
         },
