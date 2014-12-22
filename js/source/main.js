@@ -153,7 +153,7 @@
             inputMarkup = inputMarkup.replace('<','&lt;');
             inputMarkup = inputMarkup.replace('>','&gt;');
             inputMarkup = inputMarkup.replace(' class="input"', '');
-            inputMarkup = inputMarkup.replace('/style="([^"]*)"/','');
+            inputMarkup = inputMarkup.replace('/(style="([^"]*)")/','');
             output.innerHTML = inputMarkup;
             this.buildNewUrl();
             
