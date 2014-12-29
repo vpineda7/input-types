@@ -27,9 +27,6 @@ a {
 	&:visited:hover {
 		color: darken($color-green, 10%);
 	}
-	&:visited {
-		color: lighten($color-green, 10%);
-	}
 
 }
 
