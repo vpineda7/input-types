@@ -10,6 +10,6 @@ module.exports = {
     },
     options: {
         beautify: false,
-        mangle: true
+        mangle: false
     }
 };
