@@ -7,6 +7,7 @@
         init: function() {
             this.resultsSection = document.querySelector('.input-sections');
             this.inputSectionsForm = document.querySelector('.input-sections-form');
+            this.modifersForm = document.querySelector('.modifiers-form');
             this.inputSectionTemplate = tmpl("input_section_template");
             this.messageContainer = document.querySelector('.messages');
             this.welcomeMessageAlreadyLoaded = false;
@@ -50,6 +51,11 @@
             
             this.inputSectionsForm.addEventListener('submit', function(e) {
                 self.onSuccessfulFormSubmit(e);
+            });
+            
+            this.modifiersForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                this.inputSectionsForm.initEvent('submit', true, false);
             });
 
             document.addEventListener('click', function(e) {
