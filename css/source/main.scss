@@ -164,7 +164,8 @@ a.button {
 	transition: background .2s;
 
 	
-	&:hover { 
+	&:hover,
+	&:visited:hover { 
 		background: darken($color-green, 10%);
 		color: $color-white;
 	}
