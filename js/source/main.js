@@ -50,6 +50,7 @@
             });
             
             this.inputSectionsForm.addEventListener('submit', function(e) {
+                e.preventDefault();
                 self.onSuccessfulFormSubmit(e);
             });
             
