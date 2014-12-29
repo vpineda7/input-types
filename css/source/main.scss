@@ -23,7 +23,8 @@ a {
 	text-decoration: none;
 	transition: color $transition-time;
 	
-	&:hover, &:visited:hover {
+	&:hover, 
+	&:visited:hover {
 		color: darken($color-green, 10%);
 	}
 	&:visited {
@@ -114,7 +115,8 @@ a.button {
 	cursor: pointer;
 	transition: background $transition-time;
 	
-	&:hover { 
+	&:hover,
+	&:visited:hover { 
 		background: darken($color-green, 10%);
 		color: $color-white;
 		text-decoration: none;
@@ -161,6 +163,7 @@ a.button {
 	width: 1.125em;
 	transition: background .2s;
 
+	
 	&:hover { 
 		background: darken($color-green, 10%);
 		color: $color-white;
