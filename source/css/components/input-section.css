@@ -1,0 +1,11 @@
+.input-section {
+	margin-bottom: 2em;
+	border-bottom: .125em solid var(--color-gray-dark);
+	padding-bottom: .5em;
+	animation: fadeIn var(--anim-duration) var(--anim-easing);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

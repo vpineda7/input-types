@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic);
+
 body {
 	color: var(--color-text);
 	font-family: var(--font-family-primary);

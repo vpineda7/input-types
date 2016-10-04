@@ -1,15 +1,26 @@
-import react from "react";
-import reactDom from "react-dom";
-import redux from "react-redux";
+import React from "react";
+import ReactDom from "react-dom";
+import App from "components/app";
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import inputsReducer from "reducers/inputsReducer";
 
-let app = function() {
+let main = function() {
 
-	function init() {
-		console.log('init');
-	};
+	let store = createStore(inputsReducer)
 
-	init();
+	let appInst = React.createElement(App);
+	let appEl = document.querySelector('#app');
+
+	let providerInst = React.createElement(Provider, {store: store}, appInst);
+
+
+	ReactDom.render(providerInst, appEl);
+
 
 };
 
-export default app();
+
+export default main();
+
+

@@ -3,9 +3,19 @@
 	--color-black: #000;
 	--color-white: #fff;
 
-	--color-text: var(--color-black);
+	--color-gray-dark: #5c606d;
+	--color-gray-darker: #454851;
+	--color-gray-darkest: #2e3035;
 
-	--font-family-primary: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	--color-beige: #cdc5b4;
+
+	--color-green: #7bae7f;
+	--color-green-dark: #5e9862;
+
+	--color-text: var(--color-white);
+
+	--font-family-primary: 'Droid Serif', serif;
+	--font-family-secondary: 'Oswald', sans-serif;
 	--base-font-size: 1em;
 
 	--page-width: 80rem;

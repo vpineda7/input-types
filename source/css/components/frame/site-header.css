@@ -1,0 +1,21 @@
+.site-header {
+	background-color: var(--color-beige);
+	color: var(--color-gray-darker);	
+	padding: 1.5em 0;
+}
+
+.site-title {
+	margin-bottom: .125em;
+}
+
+.site-description {
+	font-style: italic;
+	color: var(--color-gray-dark);
+	margin-bottom: 0;
+}
+
+@media (min-width: 40em) {
+	.site-description {
+		font-size: 1.25em;
+	}	
+}

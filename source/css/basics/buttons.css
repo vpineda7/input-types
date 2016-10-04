@@ -1,7 +1,13 @@
 .button {
+	background-color: var(--color-green);
+	color: var(--color-white);
+	padding: .625em 1em;
+	font-size: 1em;
+	font-family: var(--font-family-primary);
+	border: 0;
 
 	&:hover {
-
+		background-color: var(--color-green-dark);
 	}
 
 	&:active {
